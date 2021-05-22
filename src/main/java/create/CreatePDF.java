@@ -1,6 +1,5 @@
 package create;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,20 +26,13 @@ public class CreatePDF {
     }
     public void Create(String numberpdf) throws IOException {
       	
-    	Document document = new Document(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Document
-    	
-    	String filepath = new File("").getCanonicalPath();
-		String[] parsfilepath = filepath.split("/");
-		
-		int lengthpath = parsfilepath.length;
-		String abspath=""; 
-		for(int i=0;i<(lengthpath-1);i++) {
-			abspath=abspath+parsfilepath[i]+"/";
-		}
-		filepath=abspath+"webapps/CreatePDF/Check.pdf";
-		String imagepath=abspath+"webapps/CreatePDF/picture/ugatu.png";
-		String fontpath =abspath+"/webapps/CreatePDF/fonts/times.ttf";
-    	
+    	Document document = new Document();
+    			
+		String tomcatPath = System.getProperty("catalina.base");
+		String filepath = tomcatPath + "/webapps/CreatePDF/Check.pdf";
+		String imagepath = tomcatPath + "/webapps/CreatePDF/picture/ugatu.png";
+		String fontpath = tomcatPath + "/webapps/CreatePDF/fonts/times.ttf";
+		 	
 		try {	
 			PdfWriter.getInstance(document, new FileOutputStream(filepath));
 		} catch (FileNotFoundException | DocumentException e) {
@@ -56,11 +48,11 @@ public class CreatePDF {
 			e.printStackTrace();
 		}
 		
-		String string_pdf = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ PDF пїЅпїЅпїЅпїЅпїЅ.";
+		String string_pdf = "Добрый день замечательные группы ПИ второго курса кафедры АСУ УГАТУ! Тестовое приложения для создания PDF файла.";
 		Paragraph paragraph = new Paragraph();
 	    paragraph.add(new Paragraph(string_pdf, new Font(times,14)));
 	    
-	    String string_pdf2 = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ PDF. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ PDF.";
+	    String string_pdf2 = "Дополнительный текст, который выводится в PDF. При этом нужно понимать, что можно указывать значения переменных, которые будут выводится в файл PDF.";
 	    paragraph.add(new Paragraph(string_pdf2, new Font(times,14)));
 	
 	    try {
@@ -69,7 +61,7 @@ public class CreatePDF {
 			e1.printStackTrace();
 		}
 	    
-	  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	  
 		 paragraph.clear();
 		 String string_pdf3 = " ";
 		 paragraph.add(new Paragraph(string_pdf3, new Font(times,14)));
@@ -81,7 +73,7 @@ public class CreatePDF {
 			}
     	
 	    
-	  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ pdf
+	 
 	    Image img = null;
 		try {
 			img = Image.getInstance(imagepath);
@@ -98,7 +90,7 @@ public class CreatePDF {
 			e2.printStackTrace();
 		}
 		
-		img.setAbsolutePosition(90, 500); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ PDF
+		img.setAbsolutePosition(90, 500); 
 		
 		try {
 				document.add(img);
@@ -107,7 +99,7 @@ public class CreatePDF {
 			}
 	    
 	    
-		 //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+
 		 paragraph.clear();
 		 paragraph.add(new Paragraph(string_pdf3, new Font(times,14)));
 		 
@@ -118,8 +110,8 @@ public class CreatePDF {
 			}
 	    
 		 
-		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-		 PdfPTable table = new PdfPTable(4); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 4 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		
+		 PdfPTable table = new PdfPTable(4); 
 		 addHeader(table);
 		 addRows(table);
 		 
@@ -129,12 +121,12 @@ public class CreatePDF {
 			e.printStackTrace();
 		}
 	    
-	    document.close(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ PDF
+	    document.close(); 
     }
     
 private void addRows(PdfPTable table) {
 		
-		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		
 		String cell1 = Calc.NumberGet;
 		String cell2 = Calc.GroupGet;
 		String cell3 = Calc.FIOGet;
@@ -145,7 +137,7 @@ private void addRows(PdfPTable table) {
 	    table.addCell(cell3);
 	    table.addCell(cell4);
 		
-	    //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+	   
 	}
 
 private void addHeader(PdfPTable table) {
