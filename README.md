@@ -1,6 +1,9 @@
-[![Build Status](https://travis-ci.com/Kazantsev27/CreatePDF.svg?branch=master)](https://travis-ci.com/Kazantsev27/CreatePDF)
-
 # CreatePDF
+[![Build Status](https://travis-ci.com/abramov26/CreatePDF.svg?branch=master)](https://travis-ci.com/abramov26/CreatePDF)
+
+Версия 1.4 от 23 мая:
+- были внесены изменения для улучшения работоспособности на локальных серверах.
+____________________________________________________________________
 Версия 1.3 от 8 мая:
 - для работы веб-приложения нужно запустить Tomcat с правами суперпользователя (sudo sh startup.sh).
 - работа на Tomcat без внесения изменений.
